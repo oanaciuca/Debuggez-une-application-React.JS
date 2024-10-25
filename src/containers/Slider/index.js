@@ -15,7 +15,6 @@ const Slider = () => {
       setIndex((prevIndex) => prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0);
     }, 5000);
   };
-  
   useEffect(() => {
     nextCard();
   });
