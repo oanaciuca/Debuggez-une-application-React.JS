@@ -30,6 +30,10 @@ export const DataProvider = ({ children }) => {
     if (data) return;
     getData();
   });
+
+  const last = data?.events?.sort(
+    (evtA, evtB) => new Date(evtB.date) - new Date(evtA.date)
+  )[0];
   
   return (
     <DataContext.Provider
@@ -37,6 +41,7 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
+        last,
       }}
     >
       {children}
