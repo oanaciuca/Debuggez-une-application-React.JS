@@ -7,11 +7,11 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
-  const byDateAsc = data?.focus ? data.focus.sort((evtA, evtB) => new Date(evtA.date) - new Date(evtB.date)) : [];
+  const byDateDesc = data?.focus ? data.focus.sort((evtA, evtB) => new Date(evtB.date) - new Date(evtA.date)) : [];
 
   const nextCard = () => {
     setTimeout(() => {
-      setIndex((prevIndex) => prevIndex < byDateAsc.length - 1 ? prevIndex + 1 : 0);
+      setIndex((prevIndex) => prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0);
     }, 5000);
   };
   useEffect(() => {
@@ -19,7 +19,7 @@ const Slider = () => {
   });
   return (
     <div className="SlideCardList">
-      {byDateAsc?.map((event, idx) => (
+      {byDateDesc?.map((event, idx) => (
         // Renvoi plusieurs éléments
         <React.Fragment key={event.date}>
           <div
@@ -39,7 +39,7 @@ const Slider = () => {
           </div>
           <div className="SlideCard__paginationContainer">
             <div className="SlideCard__pagination">
-              {byDateAsc.map((_, radioIdx) => (
+              {byDateDesc.map((_, radioIdx) => (
                 <input
                   key={_.date}
                   type="radio"
