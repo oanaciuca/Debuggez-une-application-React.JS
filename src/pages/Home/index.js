@@ -121,7 +121,7 @@ const Page = () => {
           title={last?.title}
           date={new Date(last?.date)}
           small
-          label="Conférence"
+          label={last?.type}
         />
       </div>
       <div className="col contact">
